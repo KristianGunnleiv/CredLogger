@@ -24,7 +24,7 @@
     <Compile Include="CredLoggerV2.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="module1.py">
+    <Compile Include="sqlFunc.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

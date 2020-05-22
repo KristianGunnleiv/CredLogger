@@ -13,6 +13,7 @@
 
 import tkinter as tk
 import sqlite3 as sql
+from sqlFunc import *
 
 conn = sql.connect("profiles.db")
 cursor = conn.cursor()
@@ -43,7 +44,7 @@ def get_profiles_callback():
 
     tk.Label(text=output)
 
-    tk.Button(getProfWnd, text="Get profile(s)", command=cursor.execute("SELECT * FROM brukerdata WHERE ").grid(row=5,column=1)
+    tk.Button(getProfWnd, text="Get profile(s)", command= SqlFunc.getNotNullStr(brukerdata, service=service, username=username, password=password).grid(row=5,column=1)
     
 
 def add_profiles_callback():
