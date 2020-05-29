@@ -45,7 +45,7 @@ def get_profiles_callback():
 
     tk.Label(text=output)
 
-    tk.Button(getProfWnd, text="Get profile(s)", command=lambda:func.getNotNullStr("brukerdata", service=service.get(), username=username.get(), password=password.get())).grid(row=5,column=1)
+    tk.Button(getProfWnd, text="Get profile(s)", command=lambda:func.getInNotNull("brukerdata", service=service.get(), username=username.get(), password=password.get())).grid(row=5,column=1)
 
 def add_profiles_callback():
     addProfWnd = tk.Toplevel(MainWnd)

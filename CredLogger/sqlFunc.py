@@ -12,7 +12,7 @@ class SqlFunc:
 
         for i in kwargs:
             if kwargs.get(i) != "":
-                SELECT += "=".join([i, kwargs.get(i)])
+                SELECT += " = " + i + kwargs.get(i)
         SELECT += ";"
         
 
