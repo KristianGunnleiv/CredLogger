@@ -19,6 +19,7 @@ conn = sql.connect("profiles.db")
 cursor = conn.cursor()
 MainWnd = tk.Tk()
 MainWnd.geometry("165x50")
+func = SqlFunc("profiles.db")
 
 cursor.execute("CREATE TABLE IF NOT EXISTS brukerdata(service TEXT NOT NULL UNIQUE, username TEXT NOT NULL UNIQUE, password TEXT NOT NULL UNIQUE);")
 
@@ -44,8 +45,7 @@ def get_profiles_callback():
 
     tk.Label(text=output)
 
-    tk.Button(getProfWnd, text="Get profile(s)", command= SqlFunc.getNotNullStr(brukerdata, service=service, username=username, password=password).grid(row=5,column=1)
-    
+    tk.Button(getProfWnd, text="Get profile(s)", command=lambda:func.getNotNullStr("brukerdata", service=service.get(), username=username.get(), password=password.get())).grid(row=5,column=1)
 
 def add_profiles_callback():
     addProfWnd = tk.Toplevel(MainWnd)
