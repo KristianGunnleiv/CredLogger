@@ -20,5 +20,5 @@ class SqlFunc:
         self.QueryOut.append(self._cursor.fetchall())
 
     
-    def lastQOut():
+    def lastQOut(self):
         return self.QueryOut[len(self.QueryOut)]
