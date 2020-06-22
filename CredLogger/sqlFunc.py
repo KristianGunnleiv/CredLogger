@@ -8,13 +8,12 @@ class SqlFunc:
 
 #input string like e.g. last="hello". this means column name, "=" and finally the string (Non string values will be converted to string). A "select * from 'table' WHERE 'kwargs'" clause will be executed without empty strings as args.
     def getInNotNull(self, table, **kwargs):
-        SELECT = f"SELECT * FROM {table} WHERE "
+        SELECT = f"SELECT * FROM {table} WHERE"
 
-        for i in kwargs:
-            if kwargs.get(i) != "":
-                SELECT += " = " + i + kwargs.get(i)
+        for i,key in enumerate(kwargs):
+            if kwargs.get(val) != "":
+                SELECT += " && ".join([key, kwargs.get(key)])
         SELECT += ";"
-        
 
         self._cursor.execute(SELECT)
         self._connection.commit()

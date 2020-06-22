@@ -21,7 +21,7 @@ MainWnd = tk.Tk()
 MainWnd.geometry("165x50")
 func = SqlFunc("profiles.db")
 
-cursor.execute("CREATE TABLE IF NOT EXISTS brukerdata(service TEXT NOT NULL UNIQUE, username TEXT NOT NULL UNIQUE, password TEXT NOT NULL UNIQUE);")
+cursor.execute("CREATE TABLE IF NOT EXISTS brukerdata(service TEXT NOT NULL, username TEXT NOT NULL, password TEXT NOT NULL);")
 
 def get_profiles_callback():
     getProfWnd = tk.Toplevel()
@@ -44,6 +44,7 @@ def get_profiles_callback():
     tk.Entry(getProfWnd, textvariable=password).grid(row=4,column=1, columnspan=2)
 
     tk.Label(text=output)
+    output = func.lastQOut()
 
     tk.Button(getProfWnd, text="Get profile(s)", command=lambda:func.getInNotNull("brukerdata", service=service.get(), username=username.get(), password=password.get())).grid(row=5,column=1)
 
@@ -66,7 +67,7 @@ def add_profiles_callback():
     tk.Entry(addProfWnd).grid(row=3,column=1,columnspan=2)
 
     def Submit_callback():
-        cursor.execute("INSERT INTO brukerdata VALUES (, ?, ?)", (service.get(), username.get(), password.get()))
+        cursor.execute("INSERT INTO brukerdata VALUES (?, ?, ?)", (service.get(), username.get(), password.get()))
         conn.commit()
     
     tk.Button(addProfWnd, text="Add", command=Submit_callback).grid(row=4,column=1)
